@@ -4,6 +4,8 @@ import com.api.parkingcontrol.Repositories.ParkingSpotRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -24,4 +26,11 @@ public class ParkingSpotService {
         return parkingSpotRepository.findAll();
     }
 
+    public Optional findById(UUID id) {
+        return  parkingSpotRepository.findById(id);
+    }
+
+    public void delete(ParkingSpotModel parkingSpotModel) {
+        parkingSpotRepository.delete(parkingSpotModel);
+    }
 }

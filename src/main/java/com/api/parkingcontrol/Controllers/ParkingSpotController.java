@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -35,5 +37,22 @@ public class ParkingSpotController {
     @GetMapping
     public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpots(){
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object>  getOneParkingSpot(@PathVariable(value = "id") UUID id){
+        Optional<ParkingSpotModel> parkingSpotModelOptional= parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No parking spot found");
+        return  ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value="id") UUID id){
+        Optional<ParkingSpotModel> parkingSpotModelOptional= parkingSpotService.findById(id);
+        if(!parkingSpotModelOptional.isPresent())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No parking spot found");
+       parkingSpotService.delete(parkingSpotModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Parking spot Deleted Successfully.");
     }
 }
