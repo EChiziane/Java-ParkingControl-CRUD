@@ -1,15 +1,36 @@
+
 package com.api.parkingcontrol.Dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class ParkingSpotDto {
-    @NotBlank
+public class parkingSpotDto {
+    @NotBlank // Ensuring parkingSpotNumber is not blank
     private String parkingSpotNumber;
-    @NotBlank
-    @Size(max = 7)
+
+    @NotBlank // Ensuring licensePlateCar is not blank
+    @Size(max = 7) // Limiting the size of licensePlateCar to 7 characters
     private String licensePlateCar;
 
+    @NotBlank // Ensuring brandCar is not blank
+    private String brandCar;
+
+    @NotBlank // Ensuring modelCar is not blank
+    private String modelCar;
+
+    @NotBlank // Ensuring colorCar is not blank
+    private String colorCar;
+
+    @NotBlank // Ensuring responsibleName is not blank
+    private String responsibleName;
+
+    @NotBlank // Ensuring apartment is not blank
+    private String apartment;
+
+    @NotBlank // Ensuring block is not blank
+    private String block;
+
+    // Getter and setter methods for parkingSpotNumber
     public String getParkingSpotNumber() {
         return parkingSpotNumber;
     }
@@ -18,6 +39,7 @@ public class ParkingSpotDto {
         this.parkingSpotNumber = parkingSpotNumber;
     }
 
+    // Getter and setter methods for licensePlateCar
     public String getLicensePlateCar() {
         return licensePlateCar;
     }
@@ -26,6 +48,7 @@ public class ParkingSpotDto {
         this.licensePlateCar = licensePlateCar;
     }
 
+    // Getter and setter methods for brandCar
     public String getBrandCar() {
         return brandCar;
     }
@@ -34,6 +57,7 @@ public class ParkingSpotDto {
         this.brandCar = brandCar;
     }
 
+    // Getter and setter methods for modelCar
     public String getModelCar() {
         return modelCar;
     }
@@ -42,6 +66,7 @@ public class ParkingSpotDto {
         this.modelCar = modelCar;
     }
 
+    // Getter and setter methods for colorCar
     public String getColorCar() {
         return colorCar;
     }
@@ -50,6 +75,7 @@ public class ParkingSpotDto {
         this.colorCar = colorCar;
     }
 
+    // Getter and setter methods for responsibleName
     public String getResponsibleName() {
         return responsibleName;
     }
@@ -58,6 +84,7 @@ public class ParkingSpotDto {
         this.responsibleName = responsibleName;
     }
 
+    // Getter and setter methods for apartment
     public String getApartment() {
         return apartment;
     }
@@ -66,6 +93,7 @@ public class ParkingSpotDto {
         this.apartment = apartment;
     }
 
+    // Getter and setter methods for block
     public String getBlock() {
         return block;
     }
@@ -73,18 +101,4 @@ public class ParkingSpotDto {
     public void setBlock(String block) {
         this.block = block;
     }
-
-    @NotBlank
-    private String brandCar;
-    @NotBlank
-    private String modelCar;
-    @NotBlank
-    private String colorCar;
-    @NotBlank
-    private String responsibleName;
-    @NotBlank
-    private String apartment;
-    @NotBlank
-    private String block;
-
 }
